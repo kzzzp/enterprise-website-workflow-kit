@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO="${ENTERPRISE_SITE_WORKFLOW_REPO:-YOUR_GITHUB_USERNAME/enterprise-website-workflow-kit}"
+REPO="${ENTERPRISE_SITE_WORKFLOW_REPO:-kzzzp/enterprise-website-workflow-kit}"
 REF="${ENTERPRISE_SITE_WORKFLOW_REF:-main}"
 CODEX_HOME_DIR="${CODEX_HOME:-$HOME/.codex}"
 INSTALLER="$CODEX_HOME_DIR/skills/.system/skill-installer/scripts/install-skill-from-github.py"
@@ -34,4 +34,3 @@ fi
 
 echo
 echo "Done. Restart Codex to pick up newly installed skills."
-

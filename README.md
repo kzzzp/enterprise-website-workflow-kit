@@ -21,32 +21,32 @@ scripts/check-portability.py
 
 ## 一条命令安装
 
-发布到 GitHub 后，先把下面命令里的 `OWNER/REPO` 换成你的仓库，例如 `yourname/enterprise-website-workflow-kit`。
+发布到 GitHub 后，可以使用下面命令安装。本仓库地址为 `kzzzp/enterprise-website-workflow-kit`。
 
 Windows PowerShell:
 
 ```powershell
-python "$env:USERPROFILE\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py" --repo OWNER/REPO --path skills/enterprise-website-delivery
+python "$env:USERPROFILE\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py" --repo kzzzp/enterprise-website-workflow-kit --path skills/enterprise-website-delivery
 ```
 
 macOS / Linux:
 
 ```bash
-python3 "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py" --repo OWNER/REPO --path skills/enterprise-website-delivery
+python3 "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py" --repo kzzzp/enterprise-website-workflow-kit --path skills/enterprise-website-delivery
 ```
 
-也可以使用仓库里的安装脚本。发布前先把 `install.ps1` 和 `install.sh` 里的默认 `YOUR_GITHUB_USERNAME/enterprise-website-workflow-kit` 改成你的真实仓库名。
+也可以使用仓库里的安装脚本。
 
 Windows:
 
 ```powershell
-irm https://raw.githubusercontent.com/OWNER/REPO/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/kzzzp/enterprise-website-workflow-kit/main/install.ps1 | iex
 ```
 
 macOS / Linux:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/OWNER/REPO/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/kzzzp/enterprise-website-workflow-kit/main/install.sh | bash
 ```
 
 安装后重启 Codex，让新 skill 出现在可用 skill 列表中。
@@ -65,13 +65,13 @@ curl -fsSL https://raw.githubusercontent.com/OWNER/REPO/main/install.sh | bash
 Windows:
 
 ```powershell
-$env:WITH_DESIGN_SKILLS="1"; irm https://raw.githubusercontent.com/OWNER/REPO/main/install.ps1 | iex
+$env:WITH_DESIGN_SKILLS="1"; irm https://raw.githubusercontent.com/kzzzp/enterprise-website-workflow-kit/main/install.ps1 | iex
 ```
 
 macOS / Linux:
 
 ```bash
-WITH_DESIGN_SKILLS=1 curl -fsSL https://raw.githubusercontent.com/OWNER/REPO/main/install.sh | bash
+WITH_DESIGN_SKILLS=1 curl -fsSL https://raw.githubusercontent.com/kzzzp/enterprise-website-workflow-kit/main/install.sh | bash
 ```
 
 依赖 skill 安装源：

@@ -1,5 +1,5 @@
 param(
-  [string]$Repo = "YOUR_GITHUB_USERNAME/enterprise-website-workflow-kit",
+  [string]$Repo = "kzzzp/enterprise-website-workflow-kit",
   [string]$Ref = "main",
   [switch]$WithDesignSkills
 )
@@ -35,4 +35,3 @@ if ($installDesignSkills) {
 
 Write-Host ""
 Write-Host "Done. Restart Codex to pick up newly installed skills."
-
