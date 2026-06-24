@@ -2,7 +2,7 @@
 
 这是一套给 Codex 使用的中文企业官网静态 HTML 生成工作流。安装后，可以通过 `enterprise-website-delivery` skill 让 Codex 根据公司简介生成多页面静态企业官网。
 
-## 仓库结构
+## 这套包里有什么
 
 ```text
 skills/
@@ -17,11 +17,86 @@ install.sh
 scripts/check-portability.py
 ```
 
-`references/enterprise-website-workflow.md` 是工作流正文，安装后由 skill 使用相对路径读取，不再依赖某台电脑上的固定目录。
+`enterprise-website-delivery` 是主 skill。工作流文件已经内置在这个 skill 里面：
 
-## 一条命令安装
+```text
+skills/enterprise-website-delivery/references/enterprise-website-workflow.md
+```
 
-发布到 GitHub 后，可以使用下面命令安装。本仓库地址为 `kzzzp/enterprise-website-workflow-kit`。
+所以安装主 skill 时，工作流会一起安装，不需要单独安装工作流。
+
+## 推荐安装
+
+Windows PowerShell:
+
+```powershell
+irm https://raw.githubusercontent.com/kzzzp/enterprise-website-workflow-kit/main/install.ps1 | iex
+```
+
+macOS / Linux:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/kzzzp/enterprise-website-workflow-kit/main/install.sh | bash
+```
+
+这会把下面目录安装到 Codex 的 skill 目录：
+
+```text
+skills/enterprise-website-delivery
+```
+
+安装后重启 Codex，让新 skill 出现在可用 skill 列表中。
+
+## 可选：同时安装设计增强 Skill
+
+如果想让 Codex 同时安装两个设计增强 skill，可以使用下面命令。
+
+Windows PowerShell:
+
+```powershell
+$env:WITH_DESIGN_SKILLS="1"; irm https://raw.githubusercontent.com/kzzzp/enterprise-website-workflow-kit/main/install.ps1 | iex
+```
+
+macOS / Linux:
+
+```bash
+WITH_DESIGN_SKILLS=1 curl -fsSL https://raw.githubusercontent.com/kzzzp/enterprise-website-workflow-kit/main/install.sh | bash
+```
+
+这会额外尝试安装：
+
+- `design-taste-frontend`
+- `ui-ux-pro-max`
+
+注意：Codex 不会因为 `SKILL.md` 里写了这两个名字就自动下载它们。它们是外部增强 skill，不属于本仓库的主工作流。没有安装它们时，`enterprise-website-delivery` 仍然可以按内置工作流执行，只是审美检查能力会少一些。
+
+## 手动安装
+
+如果一条命令安装不可用，可以直接下载 GitHub ZIP，然后复制这个文件夹：
+
+```text
+skills/enterprise-website-delivery
+```
+
+到本机 Codex skill 目录：
+
+Windows:
+
+```text
+%USERPROFILE%\.codex\skills\enterprise-website-delivery
+```
+
+macOS / Linux:
+
+```text
+~/.codex/skills/enterprise-website-delivery
+```
+
+复制后重启 Codex。
+
+## 直接使用 Skill Installer
+
+如果你想不用安装脚本，也可以直接运行 Codex 自带的 skill installer。
 
 Windows PowerShell:
 
@@ -34,50 +109,6 @@ macOS / Linux:
 ```bash
 python3 "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py" --repo kzzzp/enterprise-website-workflow-kit --path skills/enterprise-website-delivery
 ```
-
-也可以使用仓库里的安装脚本。
-
-Windows:
-
-```powershell
-irm https://raw.githubusercontent.com/kzzzp/enterprise-website-workflow-kit/main/install.ps1 | iex
-```
-
-macOS / Linux:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/kzzzp/enterprise-website-workflow-kit/main/install.sh | bash
-```
-
-安装后重启 Codex，让新 skill 出现在可用 skill 列表中。
-
-## 设计依赖 Skill
-
-本 kit 会优先使用这些设计增强 skill：
-
-- `design-taste-frontend`
-- `ui-ux-pro-max`
-
-重要说明：Codex 不会因为 `SKILL.md` 里写了这两个名字就自动下载它们。只有在任务执行时，当前 Codex 代理读到 skill 说明，并且环境允许联网、能运行 `skill-installer` 时，才可能按说明尝试安装。
-
-推荐在第一次安装时一并安装依赖：
-
-Windows:
-
-```powershell
-$env:WITH_DESIGN_SKILLS="1"; irm https://raw.githubusercontent.com/kzzzp/enterprise-website-workflow-kit/main/install.ps1 | iex
-```
-
-macOS / Linux:
-
-```bash
-WITH_DESIGN_SKILLS=1 curl -fsSL https://raw.githubusercontent.com/kzzzp/enterprise-website-workflow-kit/main/install.sh | bash
-```
-
-依赖 skill 安装源：
-
-- `design-taste-frontend`: `Leonxlnx/taste-skill`, repo path `skills/taste-skill`
-- `ui-ux-pro-max`: `nextlevelbuilder/ui-ux-pro-max-skill`, repo path `.claude/skills/ui-ux-pro-max`
 
 ## 使用提示词
 
