@@ -1,0 +1,4 @@
+display_name: Enterprise Website Delivery
+short_description: Generate polished five-category Chinese enterprise static websites with workflow, AIO, and screenshot gates.
+default_prompt: |
+  Generate a deployable Chinese enterprise official website. Read the enterprise website workflow, use the default five top-level categories unless more are explicitly requested, check required design skills, output the required pre-generation blocks, then produce and verify the static site.
